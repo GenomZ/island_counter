@@ -25,4 +25,4 @@ if [ $# -eq 0 ]; then
     exit 1
 fi
 
-python3 -m src.island_count "$1"
+python -m src.island_count "$1"
