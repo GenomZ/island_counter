@@ -4,6 +4,8 @@
 
 ----
 
+# Read Me
+
 This is a recruitment project for a position of Python Developer.
 
 To install the package execute the following in the main directory:
@@ -29,7 +31,12 @@ of the solution I made myself to the best of my ability.
 
 Unit testing on the DFS implementations shows that for the provided test files the suggested routines are slower
 than what I have implemented.
+
 This sparks joy.
+
+----
+
+# Unit Tests
 
 To run unit tests with the sample files provided in /data please use the following command 
 in the main directory of the repo:
