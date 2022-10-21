@@ -3,7 +3,7 @@ import sys
 
 class IslandCounter:
     """
-    Island Counter is a simple program to count islands o ones ("1") in a 2D binary array on the sea of zeros ("0")
+    Island Counter is a simple program to count islands of ones ("1") in a 2D binary array on the sea of zeros ("0")
     """
     def __init__(self, file_path):
         self.data_split_as_int = []
@@ -20,7 +20,7 @@ class IslandCounter:
 
         Routine is in place that checks if all the rows in the array are of the same length
         and if the only characters in the array are only zeros (ASCII character 48)
-        and ones (ASCII character 49) and end-of-line"
+        and ones (ASCII character 49) and end-of-line
         :return:
         """
         with open(self.file_path) as f:
@@ -47,12 +47,16 @@ class IslandCounter:
         Accepts the binary 2D array from self.read_file
         Iterates through every value in the array.
         Marks all the visited LAND tiles (value: 1) as -1 and adds to the count of island.
-        If a tile with value of 1 has a neighbour, it does not add to island count.
+        If a tile with value of 1 has a neighbour, it does not add to island count thus all neighbouring 1's
+        are counted as one island.
 
         The order of range in y_coordinate is reversed to scan the array from the bottom left corner
-        as in the coordinate system.
+        in the fashion of an x,y coordinate system.
 
         If reading the input file fails, the routine returns -1.
+        The function checks all the neighbouring cells separately with a try, to bypass neighbours that are beyond
+        the boundaries of the array. The order was chosen arbitrary, but finding any -1's around stops the scan
+        and moves the procedure further, either to increment island counter, or continue scanning the array.
         :return:
         """
         self.data_split_as_int = self.read_file()

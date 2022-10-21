@@ -1,12 +1,13 @@
 import sys
 
 
-# Program to count islands in boolean 2D matrix
 class IslandCounter:
     """
     Alternative algorithm for the Island Counter assignment with Depth First Search (DFS) algorithm implemented.
     """
     def __init__(self, file_path):
+        self.COL = None
+        self.ROW = None
         self.data_split_as_int = []
         self.file_path = file_path
         self.island_count = 0
@@ -42,58 +43,47 @@ class IslandCounter:
 
         return self.data_split_as_int
 
-    # The main function that returns
-    # count of islands in a given boolean
-    # 2D matrix
     def count_islands(self):
-
+        """The main function that return count of islands in a given boolean 2D matrix"""
         self.data_split_as_int = self.read_file()
         self.ROW = len(self.data_split_as_int)
         self.COL = len(self.data_split_as_int[0])
-        # A function to check if a given cell
-        # (row, col) can be included in DFS
-        def is_safe(i, j, visited):
-            # row number is in range, column number
-            # is in range and value is 1
-            # and not yet visited
+
+        def is_safe(i, j, visited_tiles):
+            """
+            A function to check if a given cell (row, col) can be included in DFS
+            row number is in range, column number is in range and value is 1 and not yet visited
+            """
             return (0 <= i < self.ROW and
                     0 <= j < self.COL and
-                    not visited[i][j] and self.data_split_as_int[i][j])
+                    not visited_tiles[i][j] and self.data_split_as_int[i][j])
 
-        # A utility function to do DFS for a 2D
-        # boolean matrix. It only considers
-        # the 8 neighbours as adjacent vertices
-        def dfs(i, j, visited):
+        def dfs(i, j, visited_tiles):
+            """
+            A utility function to do DFS for a 2D boolean matrix. It only considers the 8 neighbours 
+            as adjacent vertices. 
+            These arrays are used to get row and column numbers of 8 neighbours of a given cell
+            """
+            row_nbr = [-1, -1, -1, 0, 0, 1, 1, 1]
+            col_nbr = [-1, 0, 1, -1, 1, -1, 0, 1]
 
-            # These arrays are used to get row and
-            # column numbers of 8 neighbours
-            # of a given cell
-            rowNbr = [-1, -1, -1, 0, 0, 1, 1, 1]
-            colNbr = [-1, 0, 1, -1, 1, -1, 0, 1]
+            """Mark this cell as visited"""
+            visited_tiles[i][j] = True
 
-            # Mark this cell as visited
-            visited[i][j] = True
-
-            # Recur for all connected neighbours
+            """Recur for all connected neighbours"""
             for k in range(8):
-                if is_safe(i + rowNbr[k], j + colNbr[k], visited):
-                    dfs(i + rowNbr[k], j + colNbr[k], visited)
+                if is_safe(i + row_nbr[k], j + col_nbr[k], visited_tiles):
+                    dfs(i + row_nbr[k], j + col_nbr[k], visited_tiles)
 
-        # Make a bool array to mark visited cells.
-        # Initially all cells are unvisited
+        """Make a bool array to mark visited cells. Initially all cells are unvisited """
         visited = [[False for j in range(self.COL)] for i in range(self.ROW)]
 
-        # Initialize count as 0 and traverse
-        # through the all cells of
-        # given matrix
-        count = 0
+        """Initialize count as 0 and traverse through the all cells of given matrix"""
         for i in range(self.ROW):
             for j in range(self.COL):
-                # If a cell with value 1 is not visited yet,
-                # then new island found
+                """If a cell with value 1 is not visited yet, then new island found"""
                 if visited[i][j] == False and self.data_split_as_int[i][j] == 1:
-                    # Visit all cells in this island
-                    # and increment island count
+                    """Visit all cells in this island and increment island count"""
                     dfs(i, j, visited)
                     self.island_count += 1
 

@@ -12,6 +12,15 @@ To install the package execute the following in the main directory:
 
 This will confirm the minimum required packages are present (which is quite cert as no external packages were used).
 
+To run the code use the island_counter.sh file that accepts a path to an input file as such:
+
+    ./island_counter.sh <path_to_your_file>
+
+Example with test file from /data directory:
+    
+    ./island_couter.sh data/test_input7
+
+
 
 I have found two implementations of Depth First Search (DFS) algorithm for the solution of this problem on top
 of the solution I made myself to the best of my ability.
@@ -22,7 +31,8 @@ Unit testing on the DFS implementations shows that for the provided test files t
 than what I have implemented.
 This sparks joy.
 
-To run unit tests with the sample files provided in /data please use the following command:
+To run unit tests with the sample files provided in /data please use the following command 
+in the main directory of the repo:
 
     python3 -m unittest test.test_island_counter.TestIslandCounter
 

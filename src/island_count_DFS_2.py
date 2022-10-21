@@ -1,12 +1,13 @@
-import sys
 
 
 class IslandCounter:
     """
     Alternative algorithm for the Island Counter assignment with Depth First Search (DFS) algorithm implemented.
-    Here without the use of 'visited matrix'.
+    Here without the use of 'visited matrix' array.
     """
     def __init__(self, file_path):
+        self.COL = None
+        self.ROW = None
         self.data_split_as_int = []
         self.file_path = file_path
         self.island_count = 0
@@ -42,44 +43,44 @@ class IslandCounter:
 
         return self.data_split_as_int
 
-    # The main function that returns
-    # count of islands in a given boolean
-    # 2D matrix
     def count_islands(self):
+        """The main function that returns count of islands in a given boolean 2D matrix"""
         self.data_split_as_int = self.read_file()
         self.ROW = len(self.data_split_as_int)
         self.COL = len(self.data_split_as_int[0])
-        # A utility function to do DFS for a 2D
-        # boolean matrix. It only considers
-        # the 8 neighbours as adjacent vertices
-        def DFS(i, j):
-            if i < 0 or i >= len(self.data_split_as_int) or j < 0 or j >= len(self.data_split_as_int[0]) or self.data_split_as_int[i][j] != 1:
+        
+        def dfs(x_coordinate, y_coordinate):
+            """
+            A utility function to do DFS for a 2D boolean matrix.
+            It only considers the 8 neighbours as adjacent vertices
+            """
+            if x_coordinate < 0 or \
+                    x_coordinate >= len(self.data_split_as_int) or \
+                    y_coordinate < 0 or \
+                    y_coordinate >= len(self.data_split_as_int[0]) or \
+                    self.data_split_as_int[x_coordinate][y_coordinate] != 1:
                 return
 
-            # mark it as visited
-            self.data_split_as_int[i][j] = -1
+            """mark it as visited"""
+            self.data_split_as_int[x_coordinate][y_coordinate] = -1
 
-            # Recur for 8 neighbours
-            DFS(i - 1, j - 1)
-            DFS(i - 1, j)
-            DFS(i - 1, j + 1)
-            DFS(i, j - 1)
-            DFS(i, j + 1)
-            DFS(i + 1, j - 1)
-            DFS(i + 1, j)
-            DFS(i + 1, j + 1)
-        # Initialize count as 0 and traverse
-        # through the all cells of
-        # given matrix
-        count = 0
+            """Recur for 8 neighbours"""
+            dfs(x_coordinate - 1, y_coordinate - 1)
+            dfs(x_coordinate - 1, y_coordinate)
+            dfs(x_coordinate - 1, y_coordinate + 1)
+            dfs(x_coordinate, y_coordinate - 1)
+            dfs(x_coordinate, y_coordinate + 1)
+            dfs(x_coordinate + 1, y_coordinate - 1)
+            dfs(x_coordinate + 1, y_coordinate)
+            dfs(x_coordinate + 1, y_coordinate + 1)
+
+        """Initialize count as 0 and traverse through the all cells of given matrix"""
         for i in range(self.ROW):
             for j in range(self.COL):
-                # If a cell with value 1 is not visited yet,
-                # then new island found
+                """If a cell with value 1 is not visited yet, then new island found"""
                 if self.data_split_as_int[i][j] == 1:
-                    # Visit all cells in this island
-                    # and increment island count
-                    DFS(i, j)
+                    """Visit all cells in this island and increment island count"""
+                    dfs(i, j)
                     self.island_count += 1
 
         return self.island_count
