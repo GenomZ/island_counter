@@ -20,19 +20,14 @@ setup(
     version="0.0.1",
     author="Krzysztof Buzar",
     classifiers=[
-        "Developement Status :: 5 - Production/Stable",
+        "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Recruitment",
         "Topic :: Python Developer Recruitment Task",
         "License :: MIT License",
         "Programming Language :: Python :: 3 Only",
     ],
-    keywords="reqruitment, developement",
+    keywords="requirement, development",
     package_dir={"": "."},
     packages=find_packages(where="src"),
     python_requires=">=3.7, <4",
-    # entry_points={  # Optional
-    #     "console_scripts": [
-    #         "sample=sample:main",
-    #     ],
-    # },
 )

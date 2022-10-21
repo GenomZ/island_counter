@@ -39,6 +39,8 @@ class IslandCounter:
                 if self.data_split_as_int[y_coordinate][x_coordinate] == 1:
                     self.data_split_as_int[y_coordinate][x_coordinate] = -1
 
+                    # Check all neighbouring fields in array if the value is -1
+                    # if it is, do not count this 1 as a new island and continue the scan
                     # x, y+1
                     try:
                         if self.data_split_as_int[y_coordinate + 1][x_coordinate] == -1:

@@ -6,23 +6,6 @@ from src.benchmark.island_count_DFS import IslandCounterDFS
 from src.benchmark.island_count_DFS_2 import IslandCounterDFS2
 
 
-# class SomeTest(unittest.TestCase):
-#     def setUp(self):
-#         self.startTime = time.time()
-#
-#     def tearDown(self):
-#         t = time.time() - self.startTime
-#         print('%s: %.3f' % (self.id(), t))
-#
-#     def testOne(self):
-#         time.sleep(1)
-#         self.assertEqual(int('42'), 42)
-#
-#     def testTwo(self):
-#         time.sleep(2)
-#         self.assertEqual(str(42), '42')
-
-
 class TestIslandCounter(unittest.TestCase):
     """
     Simple tests with different input files.
