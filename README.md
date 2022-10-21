@@ -12,7 +12,7 @@ To install the package execute the following in the main directory:
 
     pip install .
 
-This will confirm the minimum required packages are present (which is quite cert as no external packages were used).
+This will confirm the minimum required packages are present (which is quite certain as no external packages were used).
 
 To run the code use the island_counter.sh file that accepts a path to an input file as such:
 
@@ -20,16 +20,16 @@ To run the code use the island_counter.sh file that accepts a path to an input f
 
 Example with test file from /data directory:
     
-    ./island_couter.sh data/test_input7
+    ./island_counter.sh data/test_input7
 
 
 
-I have found two implementations of Depth First Search (DFS) algorithm for the solution of this problem on top
+Additionally,  I have found two implementations of Depth First Search (DFS) algorithm for the solution of this problem on top
 of the solution I made myself to the best of my ability.
 
     Source: https://www.geeksforgeeks.org/find-number-of-islands/
 
-Unit testing on the DFS implementations shows that for the provided test files the suggested routines are slower
+Timed unit testing on the two versions of DFS shows that for the provided test files the suggested routines are slower
 than what I have implemented.
 
 This sparks joy.
@@ -43,9 +43,17 @@ in the main directory of the repo:
 
     python3 -m unittest test.test_island_counter.TestIslandCounter
 
-To run tests with the two DFS implementations please execute:
-
-    DFS:    python3 -m unittest test.test_island_counter_DFS.TestIslandCounter
-    DFS_2:  python3 -m unittest test.test_island_counter_DFS_2.TestIslandCounter
+The routine checks with provided files if the program detects correct number of islands.
+Additionally, tests are performed on the read_file method, if it returns correct 2D binary array and
+if the input arrays have all rows with the same length and if all characters are 1's or 0's correctly converted to int.
 
 If there are no issues all seem to mean everything works!
+
+
+Additionally, to run timed tests of my implementation and the two DFS implementations please execute:
+
+    python3 -m unittest test.benchmark.test_benchmark
+
+This will display time per test and makes visible the execution time difference between implementations 
+with the use of test files
+

@@ -23,7 +23,5 @@ if [ $# -eq 0 ]; then
     exit 1
 fi
 
-#$(python3 -m unittest src.tests.test_simple.TestIslandCounter)
-
-result=$(python3 ./src/island_count.py "$1")
-echo "$result"
+#python3 ./src/island_count.py "$1"
+python3 -m src.island_count "$1"

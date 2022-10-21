@@ -1,7 +1,9 @@
 import sys
 
+from utils.read_file import read_file
 
-class IslandCounter:
+
+class IslandCounterDFS:
     """
     Alternative algorithm for the Island Counter assignment with Depth First Search (DFS) algorithm implemented.
     """
@@ -12,40 +14,40 @@ class IslandCounter:
         self.file_path = file_path
         self.island_count = 0
 
-    def read_file(self):
-        """
-        Reads the input file specified in the console for the bash script
-
-        The file is read and converted to a list of rows.
-        Each row is then split into a list of ints per obtained row.
-        The whole binary 2D array is passed to self.count_islands
-
-        Routine is in place that checks if all the rows in the array are of the same length
-        and if the only characters in the array are only zeros (ASCII character 48)
-        and ones (ASCII character 49) and end-of-line"
-        :return:
-        """
-        with open(self.file_path) as f:
-            data_from_file = f.read().split()
-            reference_line_length = len(data_from_file[0])
-            for line_from_file in data_from_file:
-                if len(line_from_file) != reference_line_length:
-                    return -1
-                temporary_row = []
-                for character_in_line in line_from_file:
-                    if character_in_line != "0" and character_in_line != "1":
-                        return -1
-                    try:
-                        temporary_row.append(int(character_in_line))
-                    except TypeError:
-                        return -1
-                self.data_split_as_int.append(temporary_row)
-
-        return self.data_split_as_int
+    # def read_file(self):
+    #     """
+    #     Reads the input file specified in the console for the bash script
+    #
+    #     The file is read and converted to a list of rows.
+    #     Each row is then split into a list of ints per obtained row.
+    #     The whole binary 2D array is passed to self.count_islands
+    #
+    #     Routine is in place that checks if all the rows in the array are of the same length
+    #     and if the only characters in the array are only zeros (ASCII character 48)
+    #     and ones (ASCII character 49) and end-of-line"
+    #     :return:
+    #     """
+    #     with open(self.file_path) as f:
+    #         data_from_file = f.read().split()
+    #         reference_line_length = len(data_from_file[0])
+    #         for line_from_file in data_from_file:
+    #             if len(line_from_file) != reference_line_length:
+    #                 return -1
+    #             temporary_row = []
+    #             for character_in_line in line_from_file:
+    #                 if character_in_line != "0" and character_in_line != "1":
+    #                     return -1
+    #                 try:
+    #                     temporary_row.append(int(character_in_line))
+    #                 except TypeError:
+    #                     return -1
+    #             self.data_split_as_int.append(temporary_row)
+    #
+    #     return self.data_split_as_int
 
     def count_islands(self):
         """The main function that return count of islands in a given boolean 2D matrix"""
-        self.data_split_as_int = self.read_file()
+        self.data_split_as_int = read_file(self.file_path)
         self.ROW = len(self.data_split_as_int)
         self.COL = len(self.data_split_as_int[0])
 
