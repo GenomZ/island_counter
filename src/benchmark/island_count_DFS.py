@@ -7,6 +7,7 @@ class IslandCounterDFS:
     """
     Alternative algorithm for the Island Counter assignment with Depth First Search (DFS) algorithm implemented.
     """
+
     def __init__(self, file_path):
         self.COL = None
         self.ROW = None
@@ -56,14 +57,17 @@ class IslandCounterDFS:
             A function to check if a given cell (row, col) can be included in DFS
             row number is in range, column number is in range and value is 1 and not yet visited
             """
-            return (0 <= i < self.ROW and
-                    0 <= j < self.COL and
-                    not visited_tiles[i][j] and self.data_split_as_int[i][j])
+            return (
+                0 <= i < self.ROW
+                and 0 <= j < self.COL
+                and not visited_tiles[i][j]
+                and self.data_split_as_int[i][j]
+            )
 
         def dfs(i, j, visited_tiles):
             """
-            A utility function to do DFS for a 2D boolean matrix. It only considers the 8 neighbours 
-            as adjacent vertices. 
+            A utility function to do DFS for a 2D boolean matrix. It only considers the 8 neighbours
+            as adjacent vertices.
             These arrays are used to get row and column numbers of 8 neighbours of a given cell
             """
             row_nbr = [-1, -1, -1, 0, 0, 1, 1, 1]
@@ -92,6 +96,6 @@ class IslandCounterDFS:
         return self.island_count
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     island_counter = IslandCounter(sys.argv[1])
     print(island_counter.count_islands())

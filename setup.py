@@ -8,7 +8,7 @@ from setuptools import setup, find_packages
 import pkg_resources
 import pathlib
 
-pkg_resources.require(['pip >= 20'])
+pkg_resources.require(["pip >= 20"])
 
 here = pathlib.Path(__file__).parent.resolve()
 

@@ -29,20 +29,28 @@ def read_file(file_path):
             reference_line_length = len(data_from_file[0])
             for line_from_file in data_from_file:
                 if len(line_from_file) != reference_line_length:
-                    eprint_and_quit("ERROR: The provided input does not have all the rows of the same length!")
+                    eprint_and_quit(
+                        "ERROR: The provided input does not have all the rows of the same length!"
+                    )
                 temporary_row = []
                 for character_in_line in line_from_file:
                     if character_in_line != "0" and character_in_line != "1":
-                        eprint_and_quit("ERROR: Provided input has characters that are not 0, 1 "
-                                        "or next line character!")
+                        eprint_and_quit(
+                            "ERROR: Provided input has characters that are not 0, 1 "
+                            "or next line character!"
+                        )
                     try:
                         temporary_row.append(int(character_in_line))
                     except TypeError:
-                        eprint_and_quit("ERROR: The provided input array has characters that cannot"
-                                        " be converted to int!")
+                        eprint_and_quit(
+                            "ERROR: The provided input array has characters that cannot"
+                            " be converted to int!"
+                        )
                 data_split_as_int.append(temporary_row)
     except FileNotFoundError:
-        eprint_and_quit("ERROR: The provided file path is incorrect or the file in the specified location"
-                        " does not exist!")
+        eprint_and_quit(
+            "ERROR: The provided file path is incorrect or the file in the specified location"
+            " does not exist!"
+        )
 
     return data_split_as_int

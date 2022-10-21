@@ -12,7 +12,7 @@ To install the package execute the following in the main directory:
 
     pip install .
 
-This will confirm the minimum required packages are present (which is quite certain as no external packages were used).
+This will confirm the minimum required packages are present.
 
 To run the code use the island_counter.sh file that accepts a path to an input file as such:
 
@@ -22,17 +22,7 @@ Example with test file from /data directory:
     
     ./island_counter.sh data/test_input7
 
-
-
-Additionally,  I have found two implementations of Depth First Search (DFS) algorithm for the solution of this problem on top
-of the solution I made myself to the best of my ability.
-
-    Source: https://www.geeksforgeeks.org/find-number-of-islands/
-
-Timed unit testing on the two versions of DFS shows that for the provided test files the suggested routines are slower
-than what I have implemented.
-
-This sparks joy.
+Which will result in 84096 being sent to STDOUT.
 
 ----
 
@@ -47,8 +37,22 @@ The routine checks with provided files if the program detects correct number of 
 Additionally, tests are performed on the read_file method, if it returns correct 2D binary array and
 if the input arrays have all rows with the same length and if all characters are 1's or 0's correctly converted to int.
 
-If there are no issues all seem to mean everything works!
+File test_input7 was made bigger than 1MB to check for memory issues. None were found.
+test_wrong_input2 is testing non-ASCII characters. Also, no issues found.
 
+All errors are communicated to STDERR and terminate the python script.
+
+----
+
+# Benchmark
+
+Additionally, I have found [two implementations of Depth First Search (DFS)](https://www.geeksforgeeks.org/find-number-of-islands/) algorithm for the solution of this problem on top
+of the solution I made myself to the best of my ability.
+
+Timed unit testing on the two versions of DFS shows that for the provided test files the suggested routines are slower
+than what I have implemented.
+
+This sparks joy.
 
 Additionally, to run timed tests of my implementation and the two DFS implementations please execute:
 
@@ -57,3 +61,10 @@ Additionally, to run timed tests of my implementation and the two DFS implementa
 This will display time per test and makes visible the execution time difference between implementations 
 with the use of test files
 
+----
+
+# Additional Notes
+
+Repository [black](https://pypi.org/project/black/) was used to reformat the code up to current formatting standard.
+
+    black <repository_directory>

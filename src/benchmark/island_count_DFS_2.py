@@ -8,6 +8,7 @@ class IslandCounterDFS2:
     Alternative algorithm for the Island Counter assignment with Depth First Search (DFS) algorithm implemented.
     Here without the use of 'visited matrix' array.
     """
+
     def __init__(self, file_path):
         self.COL = None
         self.ROW = None
@@ -51,17 +52,19 @@ class IslandCounterDFS2:
         self.data_split_as_int = read_file(self.file_path)
         self.ROW = len(self.data_split_as_int)
         self.COL = len(self.data_split_as_int[0])
-        
+
         def dfs(x_coordinate, y_coordinate):
             """
             A utility function to do DFS for a 2D boolean matrix.
             It only considers the 8 neighbours as adjacent vertices
             """
-            if x_coordinate < 0 or \
-                    x_coordinate >= len(self.data_split_as_int) or \
-                    y_coordinate < 0 or \
-                    y_coordinate >= len(self.data_split_as_int[0]) or \
-                    self.data_split_as_int[x_coordinate][y_coordinate] != 1:
+            if (
+                x_coordinate < 0
+                or x_coordinate >= len(self.data_split_as_int)
+                or y_coordinate < 0
+                or y_coordinate >= len(self.data_split_as_int[0])
+                or self.data_split_as_int[x_coordinate][y_coordinate] != 1
+            ):
                 return
 
             """mark it as visited"""
@@ -89,7 +92,6 @@ class IslandCounterDFS2:
         return self.island_count
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     island_counter = IslandCounter(sys.argv[1])
     print(island_counter.count_islands())
-

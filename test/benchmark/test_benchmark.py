@@ -28,12 +28,13 @@ class TestIslandCounter(unittest.TestCase):
     Simple tests with different input files.
     Checking for the right amount of counted islands per file.
     """
+
     def setUp(self):
         self.startTime = time.time()
 
     def tearDown(self):
         t = time.time() - self.startTime
-        print('%s: %.3f' % (self.id(), t))
+        print("%s: %.3f" % (self.id(), t))
 
     def test_normal_case_1(self):
         ic = IslandCounter("data/test_input1")
@@ -69,12 +70,13 @@ class TestIslandCounterDFS(unittest.TestCase):
     Simple tests with different input files.
     Checking for the right amount of counted islands per file.
     """
+
     def setUp(self):
         self.startTime = time.time()
 
     def tearDown(self):
         t = time.time() - self.startTime
-        print('%s: %.3f' % (self.id(), t))
+        print("%s: %.3f" % (self.id(), t))
 
     def test_normal_case_1(self):
         ic = IslandCounterDFS("data/test_input1")
@@ -110,12 +112,13 @@ class TestIslandCounterDFS2(unittest.TestCase):
     Simple tests with different input files.
     Checking for the right amount of counted islands per file.
     """
+
     def setUp(self):
         self.startTime = time.time()
 
     def tearDown(self):
         t = time.time() - self.startTime
-        print('%s: %.3f' % (self.id(), t))
+        print("%s: %.3f" % (self.id(), t))
 
     def test_normal_case_1(self):
         ic = IslandCounterDFS2("data/test_input1")
@@ -146,5 +149,5 @@ class TestIslandCounterDFS2(unittest.TestCase):
         self.assertEqual(ic.count_islands(), 84096)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

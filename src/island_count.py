@@ -7,6 +7,7 @@ class IslandCounter:
     """
     Island Counter is a simple program to count islands of ones ("1") in a 2D binary array on the sea of zeros ("0")
     """
+
     def __init__(self, file_path):
         self.data_split_as_int = []
         self.file_path = file_path
@@ -106,28 +107,40 @@ class IslandCounter:
                     # Diagonals:
                     # x+1, y+1
                     try:
-                        if self.data_split_as_int[y_coordinate + 1][x_coordinate + 1] == -1:
+                        if (
+                            self.data_split_as_int[y_coordinate + 1][x_coordinate + 1]
+                            == -1
+                        ):
                             continue
                     except IndexError:
                         pass
 
                     # x+1, y-1
                     try:
-                        if self.data_split_as_int[y_coordinate - 1][x_coordinate + 1] == -1:
+                        if (
+                            self.data_split_as_int[y_coordinate - 1][x_coordinate + 1]
+                            == -1
+                        ):
                             continue
                     except IndexError:
                         pass
 
                     # x-1, y+1
                     try:
-                        if self.data_split_as_int[y_coordinate + 1][x_coordinate - 1] == -1:
+                        if (
+                            self.data_split_as_int[y_coordinate + 1][x_coordinate - 1]
+                            == -1
+                        ):
                             continue
                     except IndexError:
                         pass
 
                     # x-1, y-1
                     try:
-                        if self.data_split_as_int[y_coordinate - 1][x_coordinate - 1] == -1:
+                        if (
+                            self.data_split_as_int[y_coordinate - 1][x_coordinate - 1]
+                            == -1
+                        ):
                             continue
                     except IndexError:
                         pass
@@ -137,6 +150,6 @@ class IslandCounter:
         return self.island_count
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     island_counter = IslandCounter(sys.argv[1])
     print(island_counter.count_islands())
