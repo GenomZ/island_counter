@@ -68,3 +68,10 @@ with the use of test files
 Repository [black](https://pypi.org/project/black/) was used to reformat the code up to current formatting standard.
 
     black <repository_directory>
+
+
+In case of an error executing the island_counter.sh with the message:
+
+    syntax error: unexpected end of file
+
+Run dos2unix command on the island_counter.sh file.
