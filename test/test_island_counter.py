@@ -1,6 +1,5 @@
-# import sys
-# sys.path.insert(0, '../src')
 import unittest
+
 from src.island_count import IslandCounter
 from utils import read_file
 
@@ -40,7 +39,6 @@ class TestIslandCounter(unittest.TestCase):
         self.assertEqual(ic.count_islands(), 84096)
 
     def test_file_input_case_1(self):
-        # ic = IslandCounter("data/test_input1")
         self.assertEqual(
             read_file.read_file("data/test_input1"),
             [
@@ -64,7 +62,6 @@ class TestIslandCounter(unittest.TestCase):
         )
 
     def test_file_input_case_2(self):
-        # ic = IslandCounter("data/test_input2")
         self.assertEqual(
             read_file.read_file("data/test_input2"),
             [
@@ -88,7 +85,6 @@ class TestIslandCounter(unittest.TestCase):
         )
 
     def test_file_input_case_3(self):
-        # ic = IslandCounter("data/test_input3")
         self.assertEqual(
             read_file.read_file("data/test_input3"),
             [

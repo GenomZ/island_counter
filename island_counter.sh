@@ -2,10 +2,12 @@
 
 if [ $# -eq 0 ]; then
     echo ">>>>>>>>>> No arguments provided <<<<<<<<<<"
+    echo
     echo "island_counter requires an input file to run"
     echo "Please provide a file of appropriate format."
     echo "  - only zeros (ASCII character 48)"
-    echo "  - ones (ASCII character 49) and end-of-line"
+    echo "  - ones (ASCII character 49)"
+    echo "  - end-of-line character"
     echo "i.e.:"
     echo
     echo "000000000"

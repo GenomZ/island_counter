@@ -1,7 +1,7 @@
 from utils.eprint import eprint_and_quit
 
 
-def read_file(file_path):
+def read_file(file_path: str) -> list:
     """
     Reads the input file specified in the console for the bash script
 
