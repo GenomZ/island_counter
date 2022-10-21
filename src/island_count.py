@@ -20,24 +20,29 @@ class IslandCounter:
 
         Routine is in place that checks if all the rows in the array are of the same length
         and if the only characters in the array are only zeros (ASCII character 48)
-        and ones (ASCII character 49) and end-of-line
+        and ones (ASCII character 49) and end-of-line.
+
+        If the provided file path is invalid and the file cannot be found the routine also returns -1.
         :return:
         """
-        with open(self.file_path) as f:
-            data_from_file = f.read().split()
-            reference_line_length = len(data_from_file[0])
-            for line_from_file in data_from_file:
-                if len(line_from_file) != reference_line_length:
-                    return -1
-                temporary_row = []
-                for character_in_line in line_from_file:
-                    if character_in_line != "0" and character_in_line != "1":
+        try:
+            with open(self.file_path) as f:
+                data_from_file = f.read().split()
+                reference_line_length = len(data_from_file[0])
+                for line_from_file in data_from_file:
+                    if len(line_from_file) != reference_line_length:
                         return -1
-                    try:
-                        temporary_row.append(int(character_in_line))
-                    except TypeError:
-                        return -1
-                self.data_split_as_int.append(temporary_row)
+                    temporary_row = []
+                    for character_in_line in line_from_file:
+                        if character_in_line != "0" and character_in_line != "1":
+                            return -1
+                        try:
+                            temporary_row.append(int(character_in_line))
+                        except TypeError:
+                            return -1
+                    self.data_split_as_int.append(temporary_row)
+        except FileNotFoundError:
+            return -1
 
         return self.data_split_as_int
 
