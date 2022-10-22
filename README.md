@@ -10,7 +10,7 @@ This is a recruitment project for a position of Python Developer.
 
 The package requires [Python 3.7+](https://www.python.org/downloads/release/python-3108/) to run.
 
-To install the package execute the following in the main directory:
+To confirm you have the correct version of Python execute the following in the main directory:
 
     pip install .
 
@@ -19,6 +19,8 @@ This will confirm the minimum required packages are present.
 Alternatively You can run:
 
     pip install -r requirements
+
+To make sure Your pip version is >=20.
 
 ----
 
