@@ -70,8 +70,25 @@ Repository [black](https://pypi.org/project/black/) was used to reformat the cod
     black <repository_directory>
 
 
+The bash script was tested in an old bash shell and has been updated with Linux new line character.
 In case of an error executing the island_counter.sh with the message:
 
     syntax error: unexpected end of file
 
-Run dos2unix command on the island_counter.sh file.
+Run dos2unix command on the island_counter.sh file to convert text file line endings between CRLF and LF.
+
+    dos2unix island_counter.sh
+
+
+The file was made executable, and adequate command for git repository was added to keep it executable.
+if for some reason the bash script cannot be executed as:
+
+    ./island_counter.sh <path_to_your_file>
+
+Execute command:
+
+    chmod +x island_counter.sh
+
+Git command executed to prevent this issue:
+
+    git update-index --chmod +x island_counter.sh

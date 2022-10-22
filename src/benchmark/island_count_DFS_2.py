@@ -22,11 +22,11 @@ class IslandCounterDFS2:
         It only considers the 8 neighbours as adjacent vertices
         """
         if (
-                x_coordinate < 0
-                or x_coordinate >= len(self.data_split_as_int)
-                or y_coordinate < 0
-                or y_coordinate >= len(self.data_split_as_int[0])
-                or self.data_split_as_int[x_coordinate][y_coordinate] != 1
+            x_coordinate < 0
+            or x_coordinate >= len(self.data_split_as_int)
+            or y_coordinate < 0
+            or y_coordinate >= len(self.data_split_as_int[0])
+            or self.data_split_as_int[x_coordinate][y_coordinate] != 1
         ):
             return
 

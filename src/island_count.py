@@ -1,6 +1,7 @@
 import sys
 
 from utils.read_file import read_file
+from utils.eprint import eprint_and_quit
 
 
 class IslandCounter:
@@ -33,7 +34,7 @@ class IslandCounter:
         """
         self.data_split_as_int = read_file(self.file_path)
         if self.data_split_as_int == -1:
-            return -1
+            eprint_and_quit("ERROR: There was an issue reading the input file!")
         for y_coordinate in reversed(range(len(self.data_split_as_int))):
             for x_coordinate in range(len(self.data_split_as_int[0])):
                 if self.data_split_as_int[y_coordinate][x_coordinate] == 1:

@@ -7,6 +7,7 @@ class IslandCounterDFS:
     """
     Alternative algorithm for the Island Counter assignment with Depth First Search (DFS) algorithm implemented.
     """
+
     def __init__(self, file_path):
         self.COL = None
         self.ROW = None
@@ -20,10 +21,10 @@ class IslandCounterDFS:
         row number is in range, column number is in range and value is 1 and not yet visited
         """
         return (
-                0 <= i < self.ROW
-                and 0 <= j < self.COL
-                and not visited_tiles[i][j]
-                and self.data_split_as_int[i][j]
+            0 <= i < self.ROW
+            and 0 <= j < self.COL
+            and not visited_tiles[i][j]
+            and self.data_split_as_int[i][j]
         )
 
     def dfs(self, i, j, visited_tiles):
