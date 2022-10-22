@@ -4,15 +4,25 @@
 
 ----
 
+This is a recruitment project for a position of Python Developer.
+
 # Read Me
 
-This is a recruitment project for a position of Python Developer.
+The package requires [Python 3.7+](https://www.python.org/downloads/release/python-3108/) to run.
 
 To install the package execute the following in the main directory:
 
     pip install .
 
 This will confirm the minimum required packages are present.
+
+Alternatively You can run:
+
+    pip install -r requirements
+
+----
+
+# Running the code
 
 To run the code use the island_counter.sh file that accepts a path to an input file as such:
 
@@ -37,8 +47,34 @@ The routine checks with provided files if the program detects correct number of 
 Additionally, tests are performed on the read_file method, if it returns correct 2D binary array and
 if the input arrays have all rows with the same length and if all characters are 1's or 0's correctly converted to int.
 
-File test_input7 was made bigger than 1MB to check for memory issues. None were found.
-test_wrong_input2 is testing non-ASCII characters. Also, no issues found.
+
+File test_input7 was made bigger than 7.4MB with 7355392 characters (0's and 1's) with 84096 islands to check for memory issues. 
+None were found.
+
+Additional inputs were prepared that were not included in the repo, tested with no issues:
+    - 73.6MB, 73553920 characters, 840960 islands
+    - 1.0GB, 1000000000 characters, 65617638 islands
+
+Additional script was included to create a test input of manual size. It was used to generate the 1GB test file.
+It accepts number of rows and columns and probability of a land tile. The number of islands will be random,
+depending on the placement of the land tiles in the file.
+
+Usage:
+
+    python3 utils/gen_input_file.py <number_of_rows> <number_of_columns> <land_tile_probability>
+
+Example:
+
+    python3 utils/gen_input_file.py 100 50 0.1
+
+Or with no parameters for default values of 100, 50, 0.1
+
+And test it with:
+
+    ./island_counter.sh data/test_input_generated
+
+
+The file test_wrong_input2 is testing non-ASCII characters. Also, no issues found.
 
 All errors are communicated to STDERR and terminate the python script.
 
