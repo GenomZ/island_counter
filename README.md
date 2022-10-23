@@ -10,7 +10,7 @@ This is a recruitment project for a position of Python Developer.
 
 The package requires [Python 3.7+](https://www.python.org/downloads/release/python-3108/) to run.
 
-To confirm you have the correct version of Python execute the following in the main directory:
+To confirm you have the correct version of Python and pip, execute the following in the main directory:
 
     pip install -r requirements
 
@@ -29,6 +29,10 @@ Example with test file from /data directory:
     ./island_counter.sh data/test_input7
 
 Which will result in 84096 being sent to STDOUT.
+
+Or for all files in /data:
+
+    for i in data/test*; do ./island_counter.sh $i; done
 
 
 The script was modified with a solution that changes the directory it is executed in to the project directory.
@@ -52,7 +56,8 @@ If the package folder is in home directory.
 
 
 
-In an extreme case where compatible python is not available, provided docker image can be used after executing:
+In an extreme case where compatible python is not available, provided docker image can be used after installing docker
+and executing:
 
     sudo docker load --input island_counter.tar
 
