@@ -12,12 +12,6 @@ The package requires [Python 3.7+](https://www.python.org/downloads/release/pyth
 
 To confirm you have the correct version of Python execute the following in the main directory:
 
-    pip install .
-
-This will confirm the minimum required packages are present.
-
-Alternatively You can run:
-
     pip install -r requirements
 
 To make sure Your pip version is >=20.
