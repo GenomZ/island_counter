@@ -12,7 +12,7 @@ The package requires [Python 3.7+](https://www.python.org/downloads/release/pyth
 
 To confirm you have the correct version of Python and pip, execute the following in the main directory:
 
-    pip install -r requirements
+    pip install -r requirements.txt
 
 To confirm Your pip version is >=20.
 
