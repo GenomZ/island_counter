@@ -26,10 +26,13 @@ class IslandCounter:
         The order of range in y_coordinate is reversed to scan the array from the bottom left corner
         in the fashion of an x,y coordinate system.
 
-        If reading the input file fails, the routine returns -1.
+        If reading the input file fails, the routine returns and error message to STDERR and terminates the program.
+
         The function checks all the neighbouring cells separately with a try, to bypass neighbours that are beyond
         the boundaries of the array. The order was chosen arbitrary, but finding any -1's around stops the scan
         and moves the procedure further, either to increment island counter, or continue scanning the array.
+        There were attempts to optimize the code, but the volume of code was decreased, the execution was slowed,
+        so the original solution was left as is.
         :return:
         """
         self.data_split_as_int = read_file(self.file_path)
@@ -115,6 +118,44 @@ class IslandCounter:
 
         return self.island_count
 
+
+    # LESS CODE BUT SLOWER!
+
+    # def check_if_visited(self, x_coord, y_coord, x_mod, y_mod):
+    #     try:
+    #         if self.data_split_as_int[y_coord + y_mod][x_coord + x_mod] == -1:
+    #             return True
+    #         else:
+    #             return False
+    #     except IndexError:
+    #         return False
+    #
+    # def count_islands(self) -> int:
+    #     self.data_split_as_int = read_file(self.file_path)
+    #     if self.data_split_as_int == -1:
+    #         eprint_and_quit("ERROR: There was an issue reading the input file!")
+    #     for y_coordinate in reversed(range(len(self.data_split_as_int))):
+    #         for x_coordinate in range(len(self.data_split_as_int[0])):
+    #             if self.data_split_as_int[y_coordinate][x_coordinate] == 1:
+    #                 self.data_split_as_int[y_coordinate][x_coordinate] = -1
+    #
+    #                 visited_flag = False
+    #                 y_neighbour_coord = [-1, 0, 1, -1, 1, -1, 0, 1]
+    #                 x_neighbour_coord = [-1, -1, -1, 0, 0, 1, 1, 1]
+    #                 for iteration in range(8):
+    #                     visited_flag = self.check_if_visited(x_coordinate,
+    #                                                          y_coordinate,
+    #                                                          x_neighbour_coord[iteration],
+    #                                                          y_neighbour_coord[iteration])
+    #                     if visited_flag:
+    #                         break
+    #
+    #                 if visited_flag:
+    #                     continue
+    #
+    #                 self.island_count += 1
+    #
+    #     return self.island_count
 
 if __name__ == "__main__":
     island_counter = IslandCounter(sys.argv[1])
