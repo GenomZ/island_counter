@@ -27,7 +27,9 @@ def gen_input_file(num_rows=100, num_col=50, land_probability=0.1):
             num_col = int(sys.argv[2])
             land_probability = float(sys.argv[3])
     except ValueError:
-        eprint_and_quit("ERROR: Provide appropriate numbers to be converted to int, int, float in order.")
+        eprint_and_quit(
+            "ERROR: Provide appropriate numbers to be converted to int, int, float in order."
+        )
 
     with open("data/test_input_generated", "w") as f:
         for row in range(num_rows):

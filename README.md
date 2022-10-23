@@ -36,6 +36,36 @@ Example with test file from /data directory:
 
 Which will result in 84096 being sent to STDOUT.
 
+
+The script was modified with a solution that changes the directory it is executed in to the project directory.
+
+    SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+    cd $(echo "$SCRIPT_DIR" | tr -d '\r') || exit
+
+It is done due to the absolute imports of the package components 
+so that the functionality is only possible from the project directory if not added to PYTHONPATH.
+
+Paths provided to the bash script should be either relative to the project directory
+or absolute system paths
+
+    ~/island_counter/island_counter.sh ~/island_counter/data/test_input7
+
+or
+    
+    ~/island_counter/island_counter.sh data/test_input7
+
+If the package folder is in home directory.
+
+
+
+In an extreme case where compatible python is not available, provided docker image can be used after executing:
+
+    sudo docker load --input island_counter.tar
+
+Then in the island_counter.sh uncomment docker run command and comment python3 command.
+
+    sudo docker run -i --rm island_counter ./island_counter.sh "$1"
+
 ----
 
 # Unit Tests

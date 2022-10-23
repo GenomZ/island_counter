@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Comment if running from the package directory and dont want to use relative path to it for input files
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+cd $(echo "$SCRIPT_DIR" | tr -d '\r') || exit
+
+# If no arguments provided, print:
 if [ $# -eq 0 ]; then
     echo ">>>>>>>>>> No arguments provided <<<<<<<<<<"
     echo
@@ -25,4 +30,8 @@ if [ $# -eq 0 ]; then
     exit 1
 fi
 
+# Uncomment if want to use provided docker container with configured python installed
+#sudo docker run -i --rm island_counter ./island_counter.sh "$1"
+
+# Commend if using docker solution
 python3 -m src.island_count "$1"
